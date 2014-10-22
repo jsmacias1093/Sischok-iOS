@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CrearIncidenteGPSViewController.h
 //  Sischok
 //
 //  Created by Juan Sebastian Macias Quintero on 21/10/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CrearIncidenteGPSViewController : UIViewController
 
 @end
-

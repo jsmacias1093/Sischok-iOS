@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Incidente.h"
+#import <RestKit/RestKit.h>
+
 
 @interface AppDelegate ()
 
@@ -14,9 +17,64 @@
 
 @implementation AppDelegate
 
++ (AppDelegate *)sharedAppDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSArray *rutaS = NSSearchPathForDirectoriesInDomains (NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *rutaPlistDirectorio =  [[rutaS objectAtIndex:0] stringByAppendingPathComponent:@"Preference"];
+    NSString *rutaPlist =  [[rutaS objectAtIndex:0] stringByAppendingPathComponent:@"Preference/propiedadesUsuario.plist"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:rutaPlist]) {
+        NSError *error3;
+        [[NSFileManager defaultManager] createDirectoryAtPath:rutaPlistDirectorio withIntermediateDirectories:NO attributes:nil error:&error3];
+        NSString *rutaPlistN = [[NSBundle mainBundle] pathForResource:@"propiedadesUsuario" ofType:@"plist"];
+        NSError *error;
+        NSData *dataplist=[[NSFileManager defaultManager] contentsAtPath:rutaPlistN];
+        NSPropertyListFormat format;
+        NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization propertyListWithData:dataplist options:NSPropertyListMutableContainersAndLeaves format:&format error:&error];
+        if (!temp)
+        {
+           
+        }
+        else
+        {
+
+            NSString* rutaJSON =[[NSBundle mainBundle] pathForResource:@"incidentesbasicos" ofType:@"json"];
+            dataplist=[[NSFileManager defaultManager] contentsAtPath:rutaJSON];
+            NSDictionary* JSONPadre = [NSJSONSerialization JSONObjectWithData:dataplist options: NSJSONReadingMutableContainers error:&error];
+            NSArray* JSONArryInc = [JSONPadre objectForKey:@"Incidentes"];
+            for (NSDictionary* incActual in JSONArryInc) {
+                Incidente* nuevo = [NSEntityDescription insertNewObjectForEntityForName:@"Incidente" inManagedObjectContext:[self managedObjectContext]];
+                nuevo.titulo = [incActual objectForKey:@"titulo"];
+                nuevo.descripcion = [incActual objectForKey:@"descripcion"];
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+                nuevo.zona = [formatter numberFromString:([incActual objectForKey:@"zona"])];
+                nuevo.gravedad = [formatter numberFromString:([incActual objectForKey:@"gravedad"])];
+                nuevo.usuarioCreacion = [incActual objectForKey:@"usuarioCreacion"];
+                nuevo.idServidor = [incActual objectForKey:@"idServidor"];
+                nuevo.fechaCreacion = [[NSDate alloc] init];
+                nuevo.latitud = [formatter numberFromString:([incActual objectForKey:@"latitud"])];
+                nuevo.longitud = [formatter numberFromString:([incActual objectForKey:@"longitud"])];
+                NSError*error2;
+                [[self managedObjectContext] save:&error2];
+            }
+            
+            [temp setValue:@"YES" forKey:@"dbIniciada"];
+            NSError*error1;
+            NSData *plistData = [NSPropertyListSerialization dataWithPropertyList: temp format:format options:NSPropertyListXMLFormat_v1_0 error:&error1];
+            if(plistData) {
+               [[NSFileManager defaultManager] createFileAtPath:rutaPlist contents:plistData attributes:nil];
+            }
+            else {
+                NSLog(@"error1 : %@",error1);
+            }
+            
+        }
+
+    }
+
     return YES;
 }
 

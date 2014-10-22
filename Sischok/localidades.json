@@ -1,0 +1,99 @@
+{
+    "localidades":[
+    {
+    "nombre":"Antonio Nariño",
+	"latitud":4.591655,
+	"longitud":-74.106505
+    } ,
+    {
+	"nombre":"Barrios Unidos",
+    "latitud":4.678611,
+	"longitud":-74.078611
+    },
+{
+	"nombre":"Bosa",
+    "latitud":4.617063,
+	"longitud":-74.189916
+},
+{
+	"nombre":"Chapinero",
+    "latitud":4.591655,
+	"longitud":-74.063333
+},
+{
+	"nombre":"Ciudad Bolivar",
+    "latitud":4.536111,
+	"longitud":-74.138889
+},
+{
+	"nombre":"Engativa",
+    "latitud":4.726111,
+	"longitud":-74.1
+},
+{
+	"nombre":"Fontibon",
+    "latitud":4.678611,
+	"longitud":-74.141111
+},
+{
+	"nombre":"Kennedy",
+    "latitud":4.643611,
+	"longitud":-74.153333
+},
+{
+	"nombre":"La Candelaria",
+    "latitud":4.591722,
+	"longitud":-74.074131
+},
+{
+	"nombre":"Martires",
+    "latitud":4.604444,
+	"longitud":-74.09
+},
+{
+	"nombre":"Puente Aranda",
+    "latitud":4.6125,
+	"longitud":-74.106667
+},
+{
+	"nombre":"Rafael Uribe",
+    "latitud":4.579722,
+	"longitud":-74.1175
+},
+{
+	"nombre":"San Cristobal",
+    "latitud":4.564722,
+	"longitud":-74.083333
+},
+{
+	"nombre":"Santa fe",
+    "latitud":4.613889,
+	"longitud":-74.078611
+                   },
+{
+	"nombre":"Suba",
+    "latitud":4.741,
+	"longitud":-74.084
+},
+{
+	"nombre":"Teusaquillo",
+    "latitud":4.670556,
+	"longitud":-74.093056
+},
+{
+	"nombre":"Tunjuelito",
+    "latitud":4.582222,
+	"longitud":-74.131944
+},
+{
+	"nombre":"Usaquen",
+    "latitud":4.719722,
+	"longitud":-74.036667
+},
+{
+	"nombre":"Usme",
+    "latitud":4.446389,
+	"longitud":-74.152222
+}
+                   ]
+}
