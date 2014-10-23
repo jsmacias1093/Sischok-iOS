@@ -10,8 +10,13 @@
 
 @interface Incidente (Crear)
 
-+ (void) crearIncidente:(Incidente *) aAgregar conContexto:(NSManagedObjectContext *) contexto;
++ (void) crearIncidente:(NSDictionary *) aAgregar conContexto:(NSManagedObjectContext *) contexto;
 
 + (NSArray* ) darUltimos5Incidentes: (NSManagedObjectContext *) contexto;
+
++ (double) indiceDeAccidentalidad :(NSInteger) zona conContexto:(NSManagedObjectContext*) contexto;
+
++ (NSArray*) darIncidentesPorZona :(NSInteger) zona conContexto:(NSManagedObjectContext*) contexto;
+
 
 @end

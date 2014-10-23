@@ -8,8 +8,8 @@
       "descripcion": "En la circunvalar con 72",
       "titulo": "Cruce Peligroso",
 	  "idServidor": "5445ec8bcba6490200dd04ce",
-	"latitud" : "4.645833",
-	"longitud": "-74.063333"
+	"latitud" : 4.645833,
+	"longitud": -74.063333
     },
 
      {
@@ -20,8 +20,8 @@
       "descripcion": "Por la Iglesia ",
       "titulo": "Cruce Peligroso",
 	"idServidor": "5445ec8bcba6490200dd04d1",
-	"latitud" : "4.591655",
-	"longitud": "-74.106505"
+	"latitud" : 4.591655,
+	"longitud": -74.106505
     },
     {
       "usuarioCreacion": "Administrador Sischok",
@@ -31,8 +31,8 @@
       "descripcion": "Por la Iglesia Santo Tomas",
       "titulo": "Peligrosa",
 	"idServidor": "5445ec8bcba6490200dd04d0",
-	"latitud" : "4.678611",
-	"longitud": "-74.078611"
+	"latitud" : 4.678611,
+	"longitud": -74.078611
 
     },
     {
@@ -43,8 +43,8 @@
       "descripcion": "Por la Iglesia San Rafael",
       "titulo": "Curva Peligrosa",
 "idServidor": "5445ec8bcba6490200dd04d2",
-	"latitud" : "4.617063",
-	"longitud": "-74.189916"
+	"latitud" : 4.617063,
+	"longitud": -74.189916
 
     },
     {
@@ -55,8 +55,8 @@
       "descripcion": "Por la Iglesia San Juan",
       "titulo": "Cruce Peligroso",
 "idServidor": "5445ec8bcba6490200dd04d5",
-	"latitud": "4.536111",
-	"longitud": "-74.138889"
+	"latitud": 4.536111,
+	"longitud": -74.138889
 
     },
     {
@@ -67,8 +67,8 @@
       "descripcion": "Por la el Colegio Distrital Colombo",
       "titulo": "Cruce Peligroso",
 "idServidor": "5445ec8bcba6490200dd04d6",
-	"latitud": "4.726111",
-	"longitud": "-74.1"
+	"latitud": 4.726111,
+	"longitud": -74.1
 
     },
     {
@@ -79,8 +79,8 @@
       "descripcion": "Por la Iglesia.",
       "titulo": "Cruce Peligroso",
 "idServidor": "5445ec8bcba6490200dd04cf",
-	"latitud": "4.678611",
-	"longitud": "-74.141111"
+	"latitud": 4.678611,
+	"longitud": -74.141111
 
     },
     {
@@ -91,8 +91,8 @@
       "descripcion": "Por la Iglesia San Pedro",
       "titulo": "Cruce inadecuado de Peatones.",
 "idServidor": "5445ec8bcba6490200dd04d4",
-	"latitud": "4.643611",
-	"longitud": "-74.153333"
+	"latitud": 4.643611,
+	"longitud": -74.153333
 
     },
     {
@@ -103,8 +103,8 @@
       "descripcion": "Por la Iglesia San Cristancho",
       "titulo": "Peligro de Atropello.",
 "idServidor": "5445ec8bcba6490200dd04d3",
-	"latitud": "4.591722",
-	"longitud": "-74.074131"
+	"latitud": 4.591722,
+	"longitud": -74.074131
 
     },
     {
@@ -115,8 +115,8 @@
       "descripcion": "Por la Colegio Vicente Nuovo",
       "titulo": "Curva Peligroso",
 "idServidor": "5445ec8bcba6490200dd04d9",
-	"latitud": "4.604444",
-	"longitud": "-74.09"
+	"latitud": 4.604444,
+	"longitud": -74.09
     },
     {
       "usuarioCreacion": "Administrador Sischok",
@@ -126,8 +126,8 @@
       "descripcion": "Por la Colegio Bellos Pinos",
       "titulo": "Cruce Peligroso",
 "idServidor": "5445ec8bcba6490200dd04d7",
-	"latitud": "4.6125",
-	"longitud": "-74.106667"
+	"latitud": 4.6125,
+	"longitud": -74.106667
 
     },
     {
@@ -138,8 +138,8 @@
       "descripcion": "Por la Colegio Pedros",
       "titulo": "Cruce Peligroso", 
 "idServidor": "5445ec8bcba6490200dd04d8",
-	"latitud": "4.579722",
-	"longitud": "-74.1175"
+	"latitud": 4.579722,
+	"longitud": -74.1175
 
     },
     {
@@ -150,8 +150,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce Peligroso",
 	"idServidor": "5445ec8ccba6490200dd04da",
-	"latitud": "4.564722",
-	"longitud": "-74.083333"
+	"latitud": 4.564722,
+	"longitud": -74.083333
 
     },
     {
@@ -162,8 +162,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce inadecuado de Peatones.",
 	"idServidor": "5445ec8ccba6490200dd04db",
-	"latitud": "4.613889",
-	"longitud": "-74.078611"
+	"latitud": 4.613889,
+	"longitud": -74.078611
 
     },
     {
@@ -174,8 +174,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce Peligroso",
 	"idServidor": "5445ec8ccba6490200dd04dc",
-	"latitud": "4.741",
-	"longitud": "-74.084"
+	"latitud": 4.741,
+	"longitud": -74.084
 
     },
     {
@@ -186,8 +186,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce Peligroso",
 	"idServidor": "5445ec8ccba6490200dd04dd",
-	"latitud": "4.670556",
-	"longitud": "-74.093056"
+	"latitud": 4.670556,
+	"longitud": -74.093056
 
     },
     {
@@ -198,8 +198,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce inadecuado de Peatones.",
 	"idServidor": "5445ec8ccba6490200dd04de",
-	"latitud": "4.582222",
-	"longitud": "-74.131944"
+	"latitud": 4.582222,
+	"longitud": -74.131944
 
     },
     {
@@ -210,8 +210,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Cruce Peligroso",
 	"idServidor": "5445ec8ccba6490200dd04df",
-	"latitud": "4.719722",
-	"longitud": "-74.036667"
+	"latitud": 4.719722,
+	"longitud": -74.036667
     },
     {
       "usuarioCreacion": "Administrador Sischok",
@@ -221,8 +221,8 @@
       "descripcion": "Por el Colegio Distrital",
       "titulo": "Semaforo no respetado por Vehiculos.",
 	"idServidor": "5445ec8ccba6490200dd04e0",
-	"latitud": "4.446389",
-	"longitud": "-74.152222"
+	"latitud": 4.446389,
+	"longitud": -74.152222
 
     }
   ]

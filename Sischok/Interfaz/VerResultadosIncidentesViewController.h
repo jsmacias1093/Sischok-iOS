@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "CentroIncidentes.h"
+#import "DetalleIncidenteViewController.h"
 
-@interface VerResultadosIncidentesViewController : UIViewController
+@interface VerResultadosIncidentesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, MKMapViewDelegate>
+@property (strong,nonatomic) NSMutableDictionary* dicIncNuevo;
+
+@property (strong, nonatomic) IBOutlet UITextField *txtIndiceSemanl;
+@property (strong, nonatomic) IBOutlet UITextField *txtIndiceGlobal;
+@property (strong, nonatomic) IBOutlet UITableView *tblResultadosInc;
+
+@property (strong,nonatomic) NSArray* arryResultado;
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapaDetalleZona;
 
 @end

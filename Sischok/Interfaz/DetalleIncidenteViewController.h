@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "Incidente.h"
 
-@interface DetalleIncidenteViewController : UIViewController
+@interface DetalleIncidenteViewController : UIViewController<MKMapViewDelegate>
 
 @property (strong,nonatomic) Incidente * objInc;
 @property (strong, nonatomic) IBOutlet UITextField *txtDescripcion;
 @property (strong, nonatomic) IBOutlet UITextField *txtGravedad;
 @property (strong, nonatomic) IBOutlet UITextField *txtUsuario;
 @property (strong, nonatomic) IBOutlet UITextField *txtFecha;
+@property (strong, nonatomic) IBOutlet MKMapView *mapaDetalleInc;
 
 @end

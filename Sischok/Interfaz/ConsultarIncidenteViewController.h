@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 #import "CentroIncidentes.h"
+#import "VerResultadosIncidentesViewController.h"
+
+
 
 @interface ConsultarIncidenteViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnMenu;

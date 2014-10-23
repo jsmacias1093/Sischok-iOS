@@ -14,9 +14,33 @@
 
 @implementation VerResultadosIncidentesViewController
 
+@synthesize arryResultado =_arryResultado;
+@synthesize dicIncNuevo = _dicIncNuevo;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tblResultadosInc.delegate = self;
+    self.tblResultadosInc.dataSource = self;
+    CentroIncidentes *centro = [CentroIncidentes darInstancia];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+    NSInteger zona = [formatter numberFromString:([self.dicIncNuevo objectForKey:@"zona"])].unsignedIntegerValue;
+    self.arryResultado = [centro darIncidentesPorZona:zona];
+    double indice = [centro indiceDeAccidentalidad:zona];
+    if (indice !=NAN) {
+        self.txtIndiceSemanl.text = [[NSString alloc] initWithFormat:@"%f",[centro indiceDeAccidentalidad:zona]];
+        self.txtIndiceGlobal.text = [[NSString alloc] initWithFormat:@"%f",[centro indiceDeAccidentalidad:zona]];
+    }
+    self.mapaDetalleZona.delegate = self;
+    CLLocationCoordinate2D coordenadaInc = CLLocationCoordinate2DMake(((NSNumber*)[self.dicIncNuevo objectForKey:@"latitud"]).doubleValue, ((NSNumber*)[self.dicIncNuevo objectForKey:@"longitud"]).doubleValue);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance (coordenadaInc, 6000, 6000);
+    [self.mapaDetalleZona setRegion:region animated:NO];
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = coordenadaInc;
+    point.title = self.title;
+    [self.mapaDetalleZona addAnnotation:point];
+    [self.mapaDetalleZona selectAnnotation:point animated:YES];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +48,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arryResultado.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [ self.tblResultadosInc dequeueReusableCellWithIdentifier:@"IncsZona"];
+    Incidente * actual = [self.arryResultado objectAtIndex:indexPath.row];
+    cell.textLabel.text = actual.titulo;
+    cell.detailTextLabel.text = actual.usuarioCreacion;
+    return cell;
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"destalleINcZona"])
+    {
+        Incidente *incO = [self.arryResultado objectAtIndex:[self.tblResultadosInc indexPathForSelectedRow].row];
+        DetalleIncidenteViewController *viewC = [segue destinationViewController];
+        viewC.title = incO.titulo;
+        viewC.objInc = incO;
+    }
+    
 }
-*/
 
 @end

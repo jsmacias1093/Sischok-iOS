@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Incidente.h"
-#import <RestKit/RestKit.h>
 
 
 @interface AppDelegate ()
@@ -23,6 +22,18 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+
     NSArray *rutaS = NSSearchPathForDirectoriesInDomains (NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *rutaPlistDirectorio =  [[rutaS objectAtIndex:0] stringByAppendingPathComponent:@"Preference"];
     NSString *rutaPlist =  [[rutaS objectAtIndex:0] stringByAppendingPathComponent:@"Preference/propiedadesUsuario.plist"];
@@ -55,8 +66,8 @@
                 nuevo.usuarioCreacion = [incActual objectForKey:@"usuarioCreacion"];
                 nuevo.idServidor = [incActual objectForKey:@"idServidor"];
                 nuevo.fechaCreacion = [[NSDate alloc] init];
-                nuevo.latitud = [formatter numberFromString:([incActual objectForKey:@"latitud"])];
-                nuevo.longitud = [formatter numberFromString:([incActual objectForKey:@"longitud"])];
+                nuevo.latitud = [incActual objectForKey:@"latitud"];
+                nuevo.longitud = [incActual objectForKey:@"longitud"];
                 NSError*error2;
                 [[self managedObjectContext] save:&error2];
             }
@@ -84,8 +95,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [NSTimer scheduledTimerWithTimeInterval:600
+                                     target:self
+                                   selector:@selector(calcularDistancia)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -181,5 +195,44 @@
         }
     }
 }
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+        self.locacionActual = newLocation;
+    
+    CLLocationDistance distanceBetween = [newLocation
+                                          distanceFromLocation:[[CLLocation alloc] initWithLatitude:4.719722 longitude:-74.036667]];
+    
+    if (distanceBetween <=10000) {
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+        localNotification.alertBody = @"Has cambiado de Zona, Revisa indices de Accidentalidad.";
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+    }
+                                          
+}
+
+-(void) calcularDistancia
+{
+    CLLocationDistance distanceBetween = [self.locacionActual
+                                          distanceFromLocation:[[CLLocation alloc] initWithLatitude:4.719722 longitude:-74.036667]];
+    
+    if (distanceBetween <=1000) {
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+        localNotification.alertBody = @"Has cambiado de Zona, Revisa indices de Accidentalidad.";
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+    }
+}
+                                          
+                                        
 
 @end

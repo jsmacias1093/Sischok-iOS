@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Incidente.h"
+#import "CentroIncidentes.h"
 
 @interface CrearIncidenteDescripcionViewController : UIViewController
 
-@property (strong,nonatomic) NSDictionary* dicIncNuevo;
+@property (strong,nonatomic) NSMutableDictionary* dicIncNuevo;
 @property (strong, nonatomic) IBOutlet UITextField *txtTitulo;
 @property (strong, nonatomic) IBOutlet UITextField *txtDescripcion;
 @property (strong, nonatomic) IBOutlet UITextField *txtGravedad;

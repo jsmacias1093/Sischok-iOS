@@ -23,8 +23,10 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.tblResultadoInc.delegate =self;
     self.tblResultadoInc.dataSource = self;
-    CentroIncidentes *centroIncidentes = [CentroIncidentes darInstancia];
-    self.arryResultadoInc = [centroIncidentes consultarIncidentesPorZonas:@""];
+    NSString* rutaJSON =[[NSBundle mainBundle] pathForResource:@"localidades" ofType:@"json"];
+    NSData * dataplist=[[NSFileManager defaultManager] contentsAtPath:rutaJSON];
+    NSError*error;
+    self.arryResultadoInc = [[NSJSONSerialization JSONObjectWithData:dataplist options: NSJSONReadingMutableContainers error:&error] objectForKey:@"localidades"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,10 +42,24 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [ self.tblResultadoInc dequeueReusableCellWithIdentifier:@"incResultado"];
-    Incidente * actual = [self.arryResultadoInc objectAtIndex:indexPath.row];
-    cell.textLabel.text = actual.titulo;
-    cell.detailTextLabel.text = actual.usuarioCreacion;
+    NSMutableDictionary * dicBarrio = [self.arryResultadoInc objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dicBarrio objectForKey:@"nombre"];
     return cell;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"detalleZona"])
+    {
+        NSInteger rowIn = [self.tblResultadoInc indexPathForSelectedRow].row;
+        NSMutableDictionary *dicBarrioSeleccionado = [self.arryResultadoInc objectAtIndex:rowIn];
+        NSString* strZona = [NSString stringWithFormat:@"%ld", rowIn ];
+        [dicBarrioSeleccionado setValue: strZona forKey:@"zona"];
+        VerResultadosIncidentesViewController * objProximaVista = [segue destinationViewController];
+        objProximaVista.title = [dicBarrioSeleccionado objectForKey:@"nombre"];
+        objProximaVista.dicIncNuevo = dicBarrioSeleccionado;
+    }
 }
 
 

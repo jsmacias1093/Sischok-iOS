@@ -42,31 +42,52 @@ static CentroIncidentes * instancia = nil;
     return [Incidente darUltimos5Incidentes:[appdelegate managedObjectContext]];
 }
 
-- (void) crearIncidente:( NSDictionary *) aAgregar
+- (BOOL) crearIncidente:( NSDictionary *) aAgregar
 {
-    
-}
-
--(NSArray*) consultarIncidentesPorZonas: (NSString *) deZonas{
-    
-//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-//        [manager.requestSerializer setValue:@"image/jpeg" forHTTPHeaderField:@"Content-Type"];
-//    
-//        [manager POST:@"http://backend-sischok.herokuapp.com/incidentes" parameters:nil constructingBodyWithBlock:^(id formData) {
-//        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
-//        } success:^(NSURLSessionDataTask *task, id responseObject) {
-//            NSLog(@"success:%@", responseObject);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//            NSLog(@"Error:%@", error);
+//            BackendRestClient *manager = [BackendRestClient sharedClient];
+//            manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/JSON"];
+//            [manager.requestSerializer setValue:@"application/JSON" forHTTPHeaderField:@"Content-Type"];
+//            NSError *error;
+//            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:aAgregar
+//                                                       options:NSJSONWritingPrettyPrinted
+//                                                         error:&error];
+//            NSString * JSONInc = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding ];
+//            [manager POST:@"http://backend-sischok.herokuapp.com/incidentes" parameters:JSONInc constructingBodyWithBlock:^(id formData) {
+//            } success:^(NSURLSessionDataTask *task, id responseObject) {
+//                NSLog(@"success:%@", responseObject);
+//                NSError* error;
+//                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:aAgregar
+//                                                                   options:NSJSONWritingPrettyPrinted
+//                                                                     error:&error];
+//                
+//                NSDictionary* JSONPadre = [NSJSONSerialization JSONObjectWithData:jsonData options: NSJSONReadingMutableContainers error:&error];
+//                
+//            }
+//        failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                NSLog(@"Error:%@", error);
 //        }];
-
-//    for (Incidente* inc in self.arryIncidentesServidor) {
-//        NSLog(@"titulo: %@, usuario: %@ ",inc.titulo,inc.usuarioCreacion);
-//    }
     
-    return self.arryIncidentesServidor;
+    
+    AppDelegate* appdelegate =[AppDelegate sharedAppDelegate];
+    [Incidente crearIncidente: aAgregar conContexto:[appdelegate managedObjectContext]];
+    return true;
 }
+
+-(double) indiceDeAccidentalidad :(NSInteger) zona
+{
+    AppDelegate* appdelegate =[AppDelegate sharedAppDelegate];
+    return [Incidente indiceDeAccidentalidad:zona conContexto:[appdelegate managedObjectContext]];
+}
+
+
+
+- (NSArray*) darIncidentesPorZona :(NSInteger) zona
+{
+    AppDelegate* appdelegate =[AppDelegate sharedAppDelegate];
+    return [Incidente darIncidentesPorZona:zona conContexto:[appdelegate managedObjectContext]];
+            
+            }
+
 
 - (void) configureRestKit
 {

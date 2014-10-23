@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import <MapKit/MapKit.h>
 
 
-@interface InicioViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+@interface InicioViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tblUltimosIncidentes;
 @property (strong,nonatomic) NSArray* arryUltimosIncidentes;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *bntMenu;
+@property (strong, nonatomic) IBOutlet MKMapView *mapaInicio;
+
 
 @end

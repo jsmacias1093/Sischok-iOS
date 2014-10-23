@@ -10,8 +10,7 @@
 #import "Incidente.h"
 #import "Incidente+Crear.h"
 #import "AppDelegate.h"
-#import <RestKit/RestKit.h>
-#import "AFHTTPSessionManager.h"
+
 
 
 @interface CentroIncidentes : NSObject
@@ -22,9 +21,11 @@
 
 - (NSArray *) darUltimos5Incidentes;
 
-- (void) crearIncidente:( NSDictionary *) aAgregar;
+- (BOOL) crearIncidente:( NSDictionary *) aAgregar;
 
--(NSArray*) consultarIncidentesPorZonas: (NSString *) deZonas;
+-(double) indiceDeAccidentalidad :(NSInteger) zona;
+
+- (NSArray*) darIncidentesPorZona :(NSInteger) zona;
 
 
 @end
